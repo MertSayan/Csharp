@@ -1,0 +1,50 @@
+namespace LoginUygulaması
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int ticket = 3;
+
+            string rightusername = "Mert";
+            string rightpassword="123456";
+
+            while (ticket > 0)
+            {
+                Console.WriteLine("You have "+ticket+" rights be careful!");
+                Console.WriteLine("Enter your username:");
+                string username=Console.ReadLine();
+                Console.WriteLine("Enter your password:");
+                string password = Console.ReadLine();
+
+                if (username == rightusername && password == rightpassword)
+                {
+                    Console.WriteLine("Login successful. Welcome!");
+                    break;
+
+                }
+                else if(username == rightusername && password != rightpassword)
+                {
+                    Console.WriteLine("Username is correct but password is incorrect. please try again");
+                    ticket--;
+                }
+                else if(username != rightusername &&  password == rightpassword)
+                {
+                    Console.WriteLine("Username is incorrect but password is correct. pls try again");
+                    ticket--;
+                }
+                else if(username != rightusername && password != rightpassword)
+                {
+                    Console.WriteLine("Username and password incorrect.pls try again");
+                    ticket--;
+                }
+            }
+            if (ticket == 0)
+            {
+                Console.WriteLine("Your 3 attempts are up. We shut down the system for security");
+
+            }
+            Console.ReadLine();
+        }
+    }
+}
