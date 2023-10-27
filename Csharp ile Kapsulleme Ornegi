@@ -1,0 +1,80 @@
+//main section start
+
+namespace KapsullemeOrnegi
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Personel personel1=new Personel();
+
+            personel1.TCKIMLIKNO = "12733748128";
+
+            Console.WriteLine(personel1.TCKIMLIKNO);
+        }
+    }
+}
+
+//main section end
+
+
+//class section start
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace KapsullemeOrnegi
+{
+    internal class Personel
+    {
+        private string tckimlikNo;
+
+        public string TCKIMLIKNO
+        {
+            get
+            {
+                return tckimlikNo.Substring(0, 5)+"******";
+            }
+            set
+            {
+                bool kontrol = false;
+                if (value.Length == 11)
+                {
+                    for(int i = 0; i < value.Length; i++)
+                    {
+                        bool sayi_mi=char.IsNumber(value[i]); //12a456789
+
+                        if (sayi_mi)
+                        {
+                            //yapmam gereken bir şey yok
+                        }
+                        else
+                        {
+                            kontrol = true;
+                            break;
+                        }
+                    }
+                    
+                    if (kontrol)
+                    {
+                        Console.WriteLine("TC kimlik numaranızda geçersiz karakter bulundu");
+                    }
+                    else
+                    {
+                        tckimlikNo = value;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Girdiginiz TC kimik no 11 karakter degildir!");
+                }
+            }
+        }
+
+
+    }
+}
+
+//class section end
